@@ -19,6 +19,7 @@ obj-$(CONFIG_XXX) += ex_sender.o
 obj-$(CONFIG_XXX) += ex_sigio.o
 obj-$(CONFIG_XXX) += ex_sv.o
 obj-$(CONFIG_XXX) += ex_tut1.o
+obj-$(CONFIG_XXX) += ex_tut2.o
 obj-$(CONFIG_XXX) += ex_xxx.o
 ex_cmd.o-objs += cmd.o crt.o common.o
 ex_dio.o-objs += dio.o crt.o common.o

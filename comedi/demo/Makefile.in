@@ -29,5 +29,4 @@ objlink(ex_inpn.o inpn.o crt.o common.o)
 objlink(ex_insn.o insn.o crt.o common.o)
 objlink(ex_outp.o outp.o crt.o common.o)
 objlink(ex_tut1.o tut1.o crt.o)
-objlink(ex_tut2.o tut2.o crt.o)
 

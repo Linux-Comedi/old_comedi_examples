@@ -1,0 +1,17 @@
+#!/bin/sh
+
+if [ "$CONFIG_RTHAL" != "" ];then
+	echo You appear to be running an RTAI-patched kernel
+
+	default=${RTAIDIR:=/usr/src/rtai}
+	if [ "${interactive}" = "y" ]
+	then
+		echo -n "Enter location of RTAI source tree [${default}]: "
+		read RTAIDIR
+	fi
+	: ${RTAIDIR:=${default}}
+	echo RTAIDIR=$RTAIDIR >>.buildvars
+	echo CFLAGS += -I $RTAIDIR/include >>.buildvars
+	export RTAIDIR
+fi
+

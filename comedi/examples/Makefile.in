@@ -1,0 +1,7 @@
+
+select(CONFIG_XXX example1.o)
+select(CONFIG_XXX example2.o)
+
+objlink(example1.o ex1.o crt.o)
+objlink(example2.o ex2.o crt.o)
+

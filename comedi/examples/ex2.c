@@ -1,7 +1,7 @@
 
 #include <linux/kernel.h>
-#include <linux/comedi.h>
-#include <linux/comedilib.h>
+#include <comedi.h>
+#include <comedilib.h>
 
 #include <rtai.h>
 #include <rtai_sched.h>

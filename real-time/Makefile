@@ -1,11 +1,11 @@
 
-COMEDIDIR=/home/ds/cvs/comedi
-LINUXDIR=/home/ds/linux/linux-2.4.0-rthal3
-RTAIDIR=/home/ds/rtai/rtai4-mf
+LINUXDIR=/home/ds/linux/linux-2.4.16-rthal5
+RTAIDIR=/home/ds/rtai/rtai4
 
 CFLAGS := -O2 -Wall -Wstrict-prototypes \
 	-D__KERNEL__ -DMODULE \
-	-I$(COMEDIDIR)/include -I$(LINUXDIR)/include \
+	-I. \
+	-I$(LINUXDIR)/include \
 	-I$(RTAIDIR)/include
 
 all:	it.o ledclock.o

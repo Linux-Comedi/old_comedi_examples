@@ -89,17 +89,17 @@ void setup_chans(void)
 				0,subd,chan);
 			switch(type){
 			case COMEDI_SUBD_AI:
+#if 0
 				if(chan<8){
 					obs_list[n_obs].chanspec = CR_PACK(chan,0,AREF_OTHER);
 					strcat(obs_list[n_obs].name," oth");
 				}else{
 					strcat(obs_list[n_obs].name," gnd");
 				}
-				if(chan<8){
-					obs_list[n_obs].observe = observe_ai3;
-				}else{
-					obs_list[n_obs].observe = observe_ai2;
-				}
+#else
+				strcat(obs_list[n_obs].name," gnd");
+				obs_list[n_obs].observe = observe_ai3;
+#endif
 				break;
 			case COMEDI_SUBD_AO:
 				obs_list[n_obs].observe = observe_ai2;
@@ -285,7 +285,7 @@ void init_display(void)
 int main(int argc, char *argv[])
 {
 
-	dev = comedi_open("/dev/comedi1");
+	dev = comedi_open("/dev/comedi0");
 
 	comedi_set_global_oor_behavior(COMEDI_OOR_NUMBER);
 

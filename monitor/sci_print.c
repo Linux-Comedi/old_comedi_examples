@@ -50,8 +50,10 @@ int sci_sprint_alt(char *s,double x,double y)
 	if(isnan(x)){
 		return sprintf(s,"%g",x);
 	}
-	if(errsig==1 && maxsig<4 && maxsig>1){
-		return sprintf(s,"%0.0f(%2.0f)",x,error);
+	if(maxsig<4 && maxsig>=1){
+		if(errsig<=1){
+			return sprintf(s,"%0.*f(%2.0f)",1-errsig,x,error);
+		}
 	}
 	if(maxsig<=0 && maxsig>=-2){
 		return sprintf(s,"%0.*f(%2.0f)",sigfigs-1-maxsig,

@@ -101,6 +101,9 @@ void setup_chans(void)
 					obs_list[n_obs].observe = observe_ai2;
 				}
 				break;
+			case COMEDI_SUBD_AO:
+				obs_list[n_obs].observe = observe_ai2;
+				break;
 			case COMEDI_SUBD_DO:
 			case COMEDI_SUBD_DI:
 			case COMEDI_SUBD_DIO:
@@ -192,11 +195,16 @@ void observe_misc(int i)
 {
 	char s[80];
 	lsampl_t data;
+	int ret;
 
-	comedi_data_read(dev,obs_list[i].subdevice,
+	ret = comedi_data_read(dev,obs_list[i].subdevice,
 		obs_list[i].chanspec,0,0,&data);
 
-	sprintf(s,"%d     ", data);
+	if(ret<0){
+		sprintf(s,"error     ");
+	}else{
+		sprintf(s,"%d     ", data);
+	}
 	mvaddstr(row_field+i,col_data,s);
 }
 
@@ -277,7 +285,7 @@ void init_display(void)
 int main(int argc, char *argv[])
 {
 
-	dev = comedi_open("/dev/comedi0");
+	dev = comedi_open("/dev/comedi1");
 
 	comedi_set_global_oor_behavior(COMEDI_OOR_NUMBER);
 
